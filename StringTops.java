@@ -18,6 +18,20 @@ public class StringTops {
 	        }
 	        return reverse;
 	    }
+	    
+	    static String removeVowels(String name) {
+	   	 String regex="[aeiouAEIOU]";
+	   	String replaceName= name.replaceAll(regex, "");
+	   	
+	   	return replaceName;
+	   	 
+	    }
+	    
+	    static void removeSpecialCharacters(String email) {
+	   	 String regex="[^a-zA-Z0-9\\s]";
+	   	 String replace=email.replaceAll(regex, "");
+	   	 System.out.println(replace);
+	    }
 
 	    // Method to count vowels in a string
 	    static void countVowels(String input) {
@@ -54,6 +68,7 @@ public class StringTops {
                 for (int j = i + 1; j < s1.length(); j++) {
                     if (s1.charAt(i) == s1.charAt(j)) {
                         count++; 
+                        System.out.println("Dup charachters : "+s1.charAt(i));
                         break;// Avoid counting the same character multiple times
                     }
                 }
@@ -133,7 +148,7 @@ public class StringTops {
 		  String topic="Java Program";
 		  String third="";
 		  String[] split=topic.split(" ");
-		  for(int i=0;i<split[0].length()-2;i++) {
+		  for(int i=0;i<split[0].length()-1;i++) {
 			  third=third+split[0].charAt(i)+split[1].charAt(i);
 		  }
 		  System.out.println(third);
@@ -175,12 +190,134 @@ public class StringTops {
 		    String[] split = topic.split(" ");
 
 		    // loop only for first 2 characters
-		    for (int i = 0; i < 2; i++) {
+		    for (int i = 0; i < split[0].length() ; i++) {
 		        String pair = "" + split[0].charAt(i) + split[1].charAt(i);
 		        System.out.println(pair);  // print each pair separately
 		    }
 		}
+	  
+	  static void actoins() {
+		  
+	  }
+	  
+	  static void vowelsConsonants() {
+		  String s="adf1242nesdn32 @$%^&*sdbfsn123";
+		  String vowels="" ,conso="",special="",digits="";
+		  for(int i=0;i<=s.length()-1;i++) {
+			  if(Character.isLetter(s.charAt(i))) {
+				  if("AEIOUaeiou".indexOf(s.charAt(i))!=-1) {
+					  vowels=vowels+s.charAt(i);
+				  }
+				  else {
+					  conso=conso+s.charAt(i);
+				  }
+			  }
+			  else if(Character.isDigit(s.charAt(i))){
+				  digits=digits+s.charAt(i);
+			  }
+			  else {
+				  special=special+s.charAt(i);
+			  }
+		  }
+		  System.out.println(vowels);
+		  System.out.println(vowels.length());
+		  System.out.println(conso);
+		  System.out.println(special);
+		  System.out.println(digits);
+	  }
+	  
+	  static void vowelsAndItsValue() {
+		  String name="Kishore";
+		  String vowels="aeiou";
+		  char[] ch=vowels.toCharArray();
+		  Map<Character,Integer> vowelsCount= new HashMap<>();
+		  for(char c:ch) {
+			  vowelsCount.put(c, 0);
+		  }
+		  
+		  char[] vh=name.toCharArray();
+		  for(char c:vh) {
+			  if(vowelsCount.containsKey(c)) {
+				  vowelsCount.put(c, vowelsCount.get(c)+1);
+			  }
+		  }
+		  
+		  for(Map.Entry<Character, Integer> chh:vowelsCount.entrySet()) {
+			  if(chh.getValue()>=1)
+			  System.out.println(chh.getKey()+""+chh.getValue());
+		  }
+	  }
 
+	  
+	 static void sindhu() {
+		  String s = "Hello World";
+	        String[] s1 = s.split(" ");
+	        for(String s2:s1){
+	          char[] c = s2.toCharArray();
+	          String reverse = "";
+	          for(int i=c.length-1; i>=0; i--){
+	              reverse = reverse+c[i];
+	          }
+	          reverse=reverse+" ";
+	          System.out.print(reverse);
+	        }
+	  }
+	 
+	 public static void removeDuplicate(String s) {
+		 HashMap<Character, Integer> count = new HashMap<>();
+		 for(char c:s.toCharArray()) {
+			 count.put(c, count.getOrDefault(c,0)+1);
+		 }
+		 //remove duplicate string
+		 for(Map.Entry<Character, Integer> entry : count.entrySet()) {
+			 if(entry.getValue()==1) {
+				 System.out.println(entry.getKey());
+			 }
+		 }
+		 //print vowels and its size
+		 for(Map.Entry<Character, Integer> entry : count.entrySet()) {
+			 if(entry.getKey()=='i') {
+				 System.out.println(entry.getKey()+" times "+entry.getValue());
+			 }
+		 }
+		 
+	 }
+	 static void swap2() {
+		 int a=5;
+		 int b=10;
+		 a=a+b;
+		 b=a-b;
+		 a=a-b;
+		 System.out.println(a);
+		 System.out.println(b);
+	 }
+	 static void anagram() {
+		 String s1="kishore";
+		 String s2="mano";
+		 
+		char[] charArray = s1.toCharArray();
+		char[] charArra = s2.toCharArray();
+		
+		Arrays.sort(charArray);
+		Arrays.sort(charArra);
+		
+		System.out.println(charArray);
+		System.out.println(charArra);
+
+		if(charArray.equals(charArra)) {
+			System.out.println("it is anagram");
+		}
+		else {
+			System.out.println("Not");
+		}
+	 }
+	 
+	 static void palindrome() {
+		 
+		 String s = "dshfg$%^&*23456";
+		 System.out.println(s.replaceAll("[^a-zA-z0-9\\s]",""));
+		 
+	 }
 
 	    // Main method
 	    public static void main(String[] args) {
@@ -198,6 +335,13 @@ concat();
 concat1();
 removeIntergers();
 occur();
+vowelsConsonants();
+vowelsAndItsValue();
+sindhu();
+removeDuplicate("kiisshore");
+swap2();
+anagram();
+palindrome();
 	    }
 
 
