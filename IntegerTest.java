@@ -180,6 +180,59 @@
 				System.out.println(nums[1]);
 			}
 			
+			
+			//descending order
+			static void moveRight() {
+				int []nums= {87,0,65,0,150};
+				int temp;
+				for(int i=0;i<nums.length;i++) {
+					for(int j=i+1;j<nums.length;j++) {
+					if(nums[i]==0) {
+						temp=nums[i];
+						nums[i]=nums[j];
+						nums[j]=temp;
+					}
+					}
+				}
+				System.out.println(Arrays.toString(nums));
+			}
+			
+			//descending order
+			static void sortStream() {
+				int []nums= {87,0,65,0,150};
+				int max=Arrays.stream(nums).max().getAsInt();
+				int min=Arrays.stream(nums).min().getAsInt();
+				System.out.println(max);
+				System.out.println(min);
+			}
+			
+			//descending order
+			static void moveLeft() {
+				int []nums= {87,0,65,0,150};
+				int temp;
+				for(int i=0;i<nums.length;i++) {
+					for(int j=i+1;j<nums.length;j++) {
+					if(nums[j]==0) {
+						temp=nums[i];
+						nums[i]=nums[j];
+						nums[j]=temp;
+					}
+					}
+				}
+				System.out.println(Arrays.toString(nums));
+			}
+			
+			static void sort() {
+				int[] nums= {12,34,25,334,78};
+						Arrays.sort(nums);
+				
+				System.out.println("Ascending sort : "+Arrays.toString(nums));
+
+
+
+			}
+			
+			
 			static void factorial() {
 				int nums =7,fact = 1;
 				for(int i =1;i<=nums;i++) {
@@ -192,6 +245,7 @@
 			// TODO Auto-generated method stub
 	System.out.println(reverseNumber(1234));
 	IntegerTest i= new IntegerTest();
+	
 	//i.countDuplicatesInArray(12);
 	i.countDuplicatesArray();
 	checkPrimeNumber();
@@ -202,6 +256,11 @@
 	largestNumberOfArray();
 	descending();
 	factorial();
+	moveLeft();
+	
+	moveRight();
+	sort();
+	sortStream();
 	int count=0;
 	for(int j=0;j<5;j++) {
 		count++;

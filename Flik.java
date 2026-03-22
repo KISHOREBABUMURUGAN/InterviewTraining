@@ -1,7 +1,10 @@
 package check;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -111,6 +114,29 @@ public class Flik {
 	    	
 	    }
 	    
+	    static void duplicateStringArrayCountswithIters() {
+//	    	String iter="kishorebabukishore";
+//	    	List<String> list=new ArrayList<String>(Arrays.asList("kishire","babu","isruti"));
+	    	String[] list= {"kishire","babu","isruti"};
+	    	for(String iter:list) {
+	    	char[] chararray=iter.toCharArray();
+	    	Map<Character, Integer> hashmap=new HashMap<>();
+	    	for(char ch:chararray ) {
+	    		if(hashmap.containsKey(ch)) {
+	    			hashmap.put(ch, hashmap.get(ch) +1);
+	    		}
+	    		else {
+	    			hashmap.put(ch, 1);
+	    		}
+	    	}
+	    	for(Map.Entry<Character, Integer> entry:hashmap.entrySet()) {
+	    		if(entry.getValue()>1) {
+	    			System.out.println("Repeating words in "+iter+" is "+entry.getKey()+ " present "+entry.getValue()+" times");
+	    		}
+	    	}
+	    	}
+	    }
+	    
 	    
 	  static  void reverseSentence() {
 	    	String name= "Kishore babu java!";
@@ -120,6 +146,7 @@ public class Flik {
 	    	for(int i=ss.length()-1;i>=0;i--) {
 	    		reverse=reverse+ss.charAt(i);
 	    	}
+	    	reverse=reverse+" ";
 	    	}
 	    	System.out.println(reverse);
 	    }
@@ -337,16 +364,16 @@ System.out.println(result); // Output: HelloWorld
 	 
 	 static void re() {
 		 String name="kishore";
-		 StringBuilder sb=new StringBuilder();
-		 for(int i=0;i<name.length();i++) {
+		 for(int i=0;i<name.length()-1;i++) {
 			 if("AEIOUaeiou".indexOf(name.charAt(i))==-1) {
-				 sb.append(name.charAt(i));
-			
+				System.out.print( name.charAt(i));
+		
 			 }
 		 }
-		 System.out.print(sb);
 		 
 	 }
+	 
+
 	 
 	 static void pattern() {
 		 for(int i=1;i<=5;i++) {
@@ -369,12 +396,86 @@ System.out.println(result); // Output: HelloWorld
 		 System.out.println();
 		 }
 		 
-		 
-	
-		
-		 
-		 
 	 }
+	 
+	 
+		static void reverseSentences() {
+			 String name= "Heloo kishore babu";
+			 String[] s=name.split(" ");
+			 String reverse="";
+			 for(int i=s.length-1;i>=0;i--) {
+				 reverse=reverse+s[i]+" ";
+			 }
+			 System.out.println(reverse);
+		 }
+		
+		static void printLengthString() {
+			String name= "kishore babu sruti aditya";
+			String[] split=name.split(" ");
+			Arrays.sort(split,Comparator.comparing(String::length));
+			
+			for(String s:split) {
+				System.out.println(s);
+			}
+			
+			//less length and large length
+			System.out.println(split[0]+" "+split[split.length-1]);
+		}
+		
+		
+		static void nearestNumber() {
+			
+			List<Float> nums=List.of(1.2f,2.3f,5.8f,9.4f);
+			float target =8.1f;
+			float nearest=nums.get(0);
+			
+			for(float num:nums) {
+				if(Math.abs(num-target)<Math.abs(nearest-target)) {
+					nearest=num;
+				}
+			}
+			System.out.println(nearest);
+		}
+		static void replaceCharactersWithArterisk() {
+			String name="kiahsajsiakshsa";
+			
+			String replace=name.replace("a","*");
+			System.out.println(replace);
+			
+			
+		}
+		
+
+static void replaceCharactersWithAsterisk() {
+    String name = "kiahsajsiakshsa";
+    StringBuilder result = new StringBuilder();
+    
+    int count = 0; // to track how many 'a' encountered
+
+    for (char ch : name.toCharArray()) {
+        if (ch == 'a') {
+            count++;  // increase for each 'a'
+            for (int i = 0; i < count; i++) {
+                result.append("*");  // append 'count' number of stars
+            }
+        } else {
+            result.append(ch); // add non-'a' characters normally
+        }
+    }
+
+    System.out.println(result.toString());
+}
+
+static void sort() {
+	Integer nums[]= {6,2,4};
+//	Arrays.sort(nums);
+//	Collections.sort(Arrays.asList(nums));
+	Collections.sort(Arrays.asList(nums),Collections.reverseOrder());
+//	Arrays.sort(nums,Collections.reverseOrder());
+//	Collections.reverse(Arrays.asList(nums));
+	System.out.println(Arrays.toString(nums));
+}
+
 
 	    // Main method
 	    public static void main(String[] args) {
@@ -403,6 +504,12 @@ pattern();
 pattern2();
 removeVowels();
 re();
+reverseSentences();
+printLengthString();
+duplicateStringArrayCountswithIters();
+nearestNumber();
+replaceCharactersWithArterisk();
+sort();
 	    }
 
 }
