@@ -8,6 +8,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Flik {
 
@@ -155,7 +156,7 @@ public class Flik {
 	    	String name= "Kishore babu java!";
 	    	String[] s=name.split(" ");
 	    	String reverse="";
-	    	for(String ss:s) {
+	    	for(String ss:s) { 
 	    		if(ss.contains("babu")) {
 	    	for(int i=ss.length()-1;i>=0;i--) {
 	    		reverse=reverse+ss.charAt(i);
@@ -464,8 +465,29 @@ static void replaceCharactersWithAsterisk() {
     }
 
     System.out.println(result.toString());
+    
+    
 }
+static void nameSort() {
 
+String name = "kishore";
+
+        char[] arr = name.toCharArray();  // convert to char array
+
+        Arrays.sort(arr);  // sort alphabetically
+
+        System.out.println(arr);
+        System.out.println(Arrays.toString(arr));
+        
+        String  s= new String(arr);
+        System.out.println(s);
+        
+        //reverse alphabet
+        
+        StringBuilder n= new StringBuilder(s);
+        System.out.println(n.reverse());
+
+}
 static void sort() {
 	Integer nums[]= {6,2,4};
 //	Arrays.sort(nums);
@@ -476,6 +498,38 @@ static void sort() {
 	System.out.println(Arrays.toString(nums));
 }
 
+static void marksSubject() {
+
+Map<String, Integer> map = new TreeMap<String, Integer>();
+map.put("Math", 98);
+map.put("English", 76);
+map.put("Science", 89);
+map.put("History", 67);
+
+// Convert map entries to a list
+List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
+
+list.sort(Map.Entry.comparingByValue());
+for(Map.Entry<String, Integer> li:list) {
+	System.out.println(li.getKey()+" "+li.getValue());
+}
+
+//// Sort the list by marks (value)
+//Collections.sort(list, (a, b) -> a.getValue() - b.getValue());
+//
+//// Print
+//for (Map.Entry<String, Integer> entry : list) {
+//    System.out.println(entry.getKey() + " = " + entry.getValue());
+//}
+
+}
+
+
+
+//jump based
+//print length based
+//comparator
+//reverse first and last
 
 	    // Main method
 	    public static void main(String[] args) {
@@ -510,6 +564,9 @@ duplicateStringArrayCountswithIters();
 nearestNumber();
 replaceCharactersWithArterisk();
 sort();
+replaceCharactersWithAsterisk();
+nameSort();
+marksSubject();
 	    }
 
 }
